@@ -8,30 +8,8 @@ Currencie currencieFromJson(String str) => Currencie.fromJson(json.decode(str));
 
 String currencieToJson(Currencie data) => json.encode(data.toJson());
 
-// class Currencies {
-//   List<Currencie> items = [];
-//   Currencies();
-//   Currencies.fromJsonList(jsonList) {
-//     if (jsonList == null) return;
-//     print('Entro \n $jsonList');
-//     // for (var elemento in jsonList) {
-//     //   print(elemento);
-//     //   final gif = Currencie.fromJson(elemento);
-//     //   items.add(gif);
-//     // }
-//     Map<String, dynamic> var1 = {};
-//     jsonList.forEach((key, value) {
-//       print(Exception(' Ocurrio Algo'));
-//       var1.addAll({key: value});
-
-//       final obj = Currencie.fromJson(var1);
-//       items.add(obj);
-//     });
-//   }
-// }
-
 class Currencie {
-  final int amount;
+  final double amount;
   final String base;
   final DateTime? date;
   final Map<String, double> rates;
@@ -59,3 +37,26 @@ class Currencie {
         "rates": Map.from(rates).map((k, v) => MapEntry<String, dynamic>(k, v)),
       };
 }
+
+// class Currencies {
+//   List<Currencie> items = [];
+//   Currencies();
+//   Currencies.fromJsonList(jsonList) {
+//     if (jsonList == null) return;
+//     print('Entro \n $jsonList');
+// for (var elemento in jsonList) {
+//   print(elemento);
+//   final gif = Currencie.fromJson(elemento);
+//   items.add(gif);
+// }
+//     Map<String, dynamic> var1 = {};
+//     jsonList.forEach((key, value) {
+//       print(Exception(' Ocurrio Algo'));
+//       var1.addAll({key: value});
+
+//       final obj = Currencie.fromJson(var1);
+//       items.add(obj);
+//     });
+//   }
+// }
+
