@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   late List<Currency> _currencyList = [];
   late int _selectedCurrency1Index = 0;
   late int _selectedCurrency2Index = 1;
+  // ignore: non_constant_identifier_names
   double _conversionResult = 0.0, _amount = 0.0, _Result1 = 0.0, _Result2 = 0.0;
   late List<FlagInfo> _flags;
 
@@ -126,7 +127,7 @@ class _MyAppState extends State<MyApp> {
               future: _currencies,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else {
@@ -138,7 +139,7 @@ class _MyAppState extends State<MyApp> {
                         children: [
                           Container(
                             alignment: Alignment.topLeft,
-                            child: Text(
+                            child: const Text(
                               "Convert",
                               style: TextStyle(
                                   fontSize: 30.0,
@@ -148,13 +149,12 @@ class _MyAppState extends State<MyApp> {
                           ),
                           OutlinedButton(
                             onPressed: () {},
-                            child: Text('Currency'),
                             style: ElevatedButton.styleFrom(
                               // Cambia el color de fondo del botón
-                              onPrimary: Color.fromRGBO(39, 76, 119,
-                                  0.8), // Cambia el color del texto del botón
+                              foregroundColor:
+                                  const Color.fromRGBO(39, 76, 119, 0.8),
                               elevation: 0, // Cambia la elevación del botón
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 15,
                                   horizontal:
                                       15), // Cambia el padding del botón
@@ -166,22 +166,23 @@ class _MyAppState extends State<MyApp> {
                                 width: 2.0,
                                 color: Color.fromRGBO(39, 76, 119, 0.8),
                               ),
-                              minimumSize: Size(108, 30),
+                              minimumSize: const Size(108, 30),
                             ),
+                            child: const Text('Currency'),
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
                           height: 340,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(255, 255, 255, 1),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
-                                  color: Colors.black26, //New
+                                  color: Colors.black12, //New
                                   blurRadius: 20.0,
                                   offset: Offset(0, 8))
                             ],
@@ -212,7 +213,7 @@ class _MyAppState extends State<MyApp> {
                                             Container(
                                               width: 40,
                                               height: 40,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.blue,
                                               ),
@@ -225,7 +226,7 @@ class _MyAppState extends State<MyApp> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                                 width:
                                                     8), // Espacio entre la bandera y el texto
                                             Text(entry.value.toString()),
@@ -235,12 +236,12 @@ class _MyAppState extends State<MyApp> {
                                     },
                                   ).toList(),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Container(
                                   alignment: Alignment.topLeft,
                                   child: Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         '1',
                                         style: TextStyle(
                                             fontSize: 11.0,
@@ -252,13 +253,13 @@ class _MyAppState extends State<MyApp> {
                                         _currencyList[_selectedCurrency1Index]
                                             .code
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
                                                 Color.fromRGBO(72, 74, 98, 1)),
                                       ),
-                                      Text(
+                                      const Text(
                                         '=',
                                         style: TextStyle(
                                             fontSize: 11.0,
@@ -268,7 +269,7 @@ class _MyAppState extends State<MyApp> {
                                       ),
                                       Text(
                                         '$_Result1',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
@@ -278,7 +279,7 @@ class _MyAppState extends State<MyApp> {
                                         _currencyList[_selectedCurrency2Index]
                                             .code
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
@@ -288,31 +289,32 @@ class _MyAppState extends State<MyApp> {
                                   ),
                                 ),
                                 TextField(
-                                  keyboardType: TextInputType.numberWithOptions(
-                                      decimal: true),
+                                  keyboardType:
+                                      const TextInputType.numberWithOptions(
+                                          decimal: true),
                                   onChanged: (newValue) {
                                     setState(() {
                                       _amount =
                                           double.tryParse(newValue) ?? 0.0;
                                     });
                                   },
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 30.0,
                                       fontWeight: FontWeight.bold,
                                       color: Color.fromRGBO(72, 74, 98, 1)),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     hintText: 'Amount',
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                   ),
                                 ),
-                                SizedBox(height: 0),
+                                const SizedBox(height: 0),
                                 Row(
                                   children: [
                                     Container(
                                       width: 220,
                                       height: 1,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color.fromRGBO(216, 216, 216, 1),
                                       ),
                                     ),
@@ -330,15 +332,18 @@ class _MyAppState extends State<MyApp> {
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: Color.fromRGBO(39, 76, 119,
-                                            0.8), // Cambia el color de fondo del botón
-                                        onPrimary: Color.fromRGBO(229, 232, 225,
-                                            1), // Cambia el color del texto del botón
+                                        foregroundColor: const Color.fromRGBO(
+                                            229, 232, 225, 1),
+                                        backgroundColor: const Color.fromRGBO(
+                                            39,
+                                            76,
+                                            119,
+                                            0.8), // Cambia el color del texto del botón
                                         elevation:
                                             0, // Cambia la elevación del botón // Cambia el padding del botón
-                                        shape: CircleBorder(),
+                                        shape: const CircleBorder(),
                                       ),
-                                      child: SizedBox(
+                                      child: const SizedBox(
                                         width:
                                             40, // Ajusta el ancho del botón circular
                                         height:
@@ -354,7 +359,7 @@ class _MyAppState extends State<MyApp> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 DropdownButton<int>(
                                   value: _selectedCurrency2Index,
                                   underline: Container(),
@@ -379,7 +384,7 @@ class _MyAppState extends State<MyApp> {
                                             Container(
                                               width: 40,
                                               height: 40,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.blue,
                                               ),
@@ -392,7 +397,7 @@ class _MyAppState extends State<MyApp> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                                 width:
                                                     8), // Espacio entre la bandera y el texto
                                             Text(entry.value.toString()),
@@ -402,12 +407,12 @@ class _MyAppState extends State<MyApp> {
                                     },
                                   ).toList(),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Container(
                                   alignment: Alignment.topLeft,
                                   child: Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         '1',
                                         style: TextStyle(
                                             fontSize: 11.0,
@@ -419,13 +424,13 @@ class _MyAppState extends State<MyApp> {
                                         _currencyList[_selectedCurrency2Index]
                                             .code
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
                                                 Color.fromRGBO(72, 74, 98, 1)),
                                       ),
-                                      Text(
+                                      const Text(
                                         '=',
                                         style: TextStyle(
                                             fontSize: 11.0,
@@ -435,7 +440,7 @@ class _MyAppState extends State<MyApp> {
                                       ),
                                       Text(
                                         '$_Result2',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
@@ -445,7 +450,7 @@ class _MyAppState extends State<MyApp> {
                                         _currencyList[_selectedCurrency1Index]
                                             .code
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                             color:
@@ -458,7 +463,7 @@ class _MyAppState extends State<MyApp> {
                                   alignment: Alignment.topLeft,
                                   child: Text(
                                     '$_conversionResult',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 30.0,
                                         fontWeight: FontWeight.bold,
                                         color: Color.fromRGBO(72, 74, 98, 1)),
@@ -469,18 +474,17 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       OutlinedButton(
                         onPressed: () {
                           convertCurrencies();
                         },
-                        child: Text('Convert'),
                         style: ElevatedButton.styleFrom(
                           // Cambia el color de fondo del botón
-                          onPrimary: Color.fromRGBO(39, 76, 119,
-                              0.8), // Cambia el color del texto del botón
+                          foregroundColor:
+                              const Color.fromRGBO(39, 76, 119, 0.8),
                           elevation: 0, // Cambia la elevación del botón
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               vertical: 15,
                               horizontal: 15), // Cambia el padding del botón
                           shape: RoundedRectangleBorder(
@@ -491,8 +495,9 @@ class _MyAppState extends State<MyApp> {
                             width: 2.0,
                             color: Color.fromRGBO(39, 76, 119, 0.8),
                           ),
-                          minimumSize: Size(108, 30),
+                          minimumSize: const Size(108, 30),
                         ),
+                        child: const Text('Convert'),
                       ),
                     ],
                   );
